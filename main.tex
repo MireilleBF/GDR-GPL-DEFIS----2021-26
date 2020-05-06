@@ -22,6 +22,8 @@
 \newcommand{\etal}[0]{\emph{et al.}~}
 \newcommand{\wrt}[0]{\emph{w.r.t.}~}
 \newcommand{\cf}[0]{cf.~}
+\newcommand{\defi}[1]{\emph{(défi p.\pageref{#1}, \cite{#1})}}
+
 \usepackage{pdfpages}
 
 
@@ -35,6 +37,19 @@ Défis 2030? 2026?}
 \maketitle
 
 \section{Introduction}
+
+Le manifeste rédigé par une partie de la communauté du GDR GPL commence par ces mots : \emph{Le contraste est saisissant entre, d’un côté, l’omniprésence de l’informatique dans notre
+société et la facilité avec laquelle on peut écrire un petit programme, et d’un autre côté, la difficulté extraordinaire de garantir la correction, la fiabilité, les performances ou encore
+l’évolutivité d’un logiciel complexe comme on en rencontre aujourd’hui dans tous les pans
+de notre société : télécoms, aérospatiale, automobile mais aussi finance, santé,
+administration, etc}\cite{Manifeste}.
+Dans le même temps, l'Association nationale néerlandaise pour le génie logiciel publiait également un manifeste \cite{Nederland2019} qui, bien évidemment reprenait le même argumentaire, mais le complétait à peu près en ces mots:  \emph{Bien que les logiciels aient un impact sur chacun de nous tout et partout, l'effort nécessaire pour rendre ces logiciels fiables, maintenables et utilisables sur de plus longues périodes est régulièrement sous-estimé, tant par les développeurs que par leurs responsables. En conséquence, nous voyons tous les jours des articles sur des bogues logiciels coûteux et des projets de développement de logiciels qui dépassent le budget ou qui échouent}\footnote{Despite the fact that software impacts everyone everywhere, the effort that is needed to make this software reliable,
+maintainable and usable for longer periods is routinely underestimated, both by developers and their managers. As a result,
+we see news items every day about expensive software bugs and over-the-budget or failed software development projects\cite{Nederland2019}.}
+
+
+
+
 
 Le Génie de la Programmation et du Logiciel est au c{\oe}ur de l'activité
 informatique. Les concepts, méthodes et les outils de conception et de
@@ -101,24 +116,69 @@ société tels que le développement durable, les économies d'énergie ou la ma
 
 \section{Defis 1}
 
+
+
+\bibliographystyle{plain}
+\bibliography{gdrGPLDefis}
+\section*{Défis}
+\begin{enumerate}
+\item \defi{combinatoire}
+\item \defi{vert}
+\item \defi{GLE}
+\item \defi{debuggers}
+\item \defi{securite}
+\item \defi{coevolution}
+\item \defi{compilation}
+\item \defi{reconfiguration}
+\item \defi{argumentation}
+\item \defi{IA}
+\item \defi{Monniaux}
+\item \defi{formelle}
+\end{enumerate}
 \section{Conclusion}
-\section{Références}
 
 
+\label{vert}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/logiciels_verts.pdf}
 
+\label{combinatoire}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/combinatoire_certifiee.pdf}
 
-
+\label{formelle}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/FM_systemes_emergents.pdf}
 
+
+
+
+
+
+
+\label{argumentation}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/argumentation_pour_des_systemes_de_confiance.pdf}
+
+\label{Monniaux}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/chaine_compilation_certifiee.pdf}
+
+\label{coevolution}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/co-evolution_des_logiciels.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/combinatoire_certifiee.pdf}
+
+\label{compilation}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Compilation_et_langages.pdf}
+
+\label{IA}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Intelligence_Artificielle.pdf}
+
+\label{debuggers}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/New Generation Debuggers.pdf}
+
+
+\label{reconfiguration}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Safe and optimal component-based dynamic reconfiguration.pdf}
+
+\label{GLE}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Vers_plus_de_fiabilite_Res_recherche.pdf}
+
+\label{securite}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/securite_dans_le_developpement_logiciel.pdf}
+
 \end{document}

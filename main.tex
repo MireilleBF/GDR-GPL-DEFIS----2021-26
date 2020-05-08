@@ -43,7 +43,7 @@ société et la facilité avec laquelle on peut écrire un petit programme, et d
 l’évolutivité d’un logiciel complexe comme on en rencontre aujourd’hui dans tous les pans
 de notre société : télécoms, aérospatiale, automobile mais aussi finance, santé,
 administration, etc}\cite{Manifeste}.
-Dans le même temps, l'Association nationale néerlandaise pour le génie logiciel publiait également un manifeste \cite{Nederland2019} qui, bien évidemment reprenait le même argumentaire, mais le complétait à peu près en ces mots:  \emph{Bien que les logiciels aient un impact sur chacun de nous tout et partout, l'effort nécessaire pour rendre ces logiciels fiables, maintenables et utilisables sur de plus longues périodes est régulièrement sous-estimé, tant par les développeurs que par leurs responsables. En conséquence, nous voyons tous les jours des articles sur des bogues logiciels coûteux et des projets de développement de logiciels qui dépassent le budget ou qui échouent}\footnote{Despite the fact that software impacts everyone everywhere, the effort that is needed to make this software reliable,
+Dans le même temps, l'Association nationale néerlandaise pour le génie logiciel publiait également un manifeste \cite{Nederland2019} qui, bien évidemment reprenait le même argumentaire, mais le complétait à peu près en ces mots:  \emph{Bien que les logiciels aient un impact sur chacun de nous tout et partout, l'effort nécessaire pour rendre ces logiciels fiables, maintenables et utilisables sur de plus longues périodes est régulièrement sous-estimé, tant par les développeurs que par leurs responsables. En conséquence, nous voyons tous les jours des articles sur des bogues logiciels coûteux et des projets de développement de logiciels qui dépassent le budget ou qui échouent.}\footnote{Despite the fact that software impacts everyone everywhere, the effort that is needed to make this software reliable,
 maintainable and usable for longer periods is routinely underestimated, both by developers and their managers. As a result,
 we see news items every day about expensive software bugs and over-the-budget or failed software development projects\cite{Nederland2019}.}
 
@@ -114,8 +114,27 @@ société tels que le développement durable, les économies d'énergie ou la ma
 
 
 
-\section{Defis 1}
+\section{Fiabilité des logiciels}
 
+\subsection{Du programme à son exécution}
+Les preuves peuvent s'appliquer à différents niveaux de description d'un programme. Les transformations, dont la compilation, sont elles-mêmes très difficiles à vérifier, d'autant qu'elles ont souvent un rôle indispensable d'optimisation. Si des travaux tels que CompCert, un compilateur C optimisant, permettent de garantir mathématiquement la même sémantique entre la source et le programme assembleur généré, de nombreux verrous doivent encore être levés, dont la gestion de la concurrence sur les processus et les données, la capacité des codes exécutés ou interprétés à supporter des environnements d'exécution difficiles, à se protéger d'attaques matérielles, … \defi{Monniaux}.
+
+\subsection{Des outils pour élaborer la confiance}
+Un des points difficiles dans l'ensemble des éléments relevés précédemment est la construction des éléments de confiance eux-même. Il est indispensable de disposer d'outils qui permettent d'élaborer ces preuves complexes avec plus de facilité, nous retrouvons cette dimension au moins dans \cite{Monniaux}.  
+
+\subsection{Informatique de confiance}
+Avec quels éléments de preuve, est-il raisonnable d'avoir confiance dans un système? Comment justifier qu'un système est bien construits? Ces questions vont au-delà de la preuve ou du test d'un système. Elles nous ramènent à  la problématique de l'accessibilité au raisonnement suivi pour donner confiance dans un système que ce soit ou non dans un objectif de certification \defi{argumentation}. 
+Elles abordent sous un nouvel angle, des verrous tels que la 
+complémentarité entre preuves, tests et simulations, les relations entre les artefacts logiciels et les exigences, entre la construction des éléments de preuve et la construction du système, etc. 
+
+\section{Maintenance et évolution des logiciels}
+
+\subsection{La maintenance face aux générateurs de code}
+Comme nous en avons discuté précédemment, les logiciels sont souvent produits par génération de code. La question de la maintenance est alors éminemment complexe impliquant de modifier les générateurs de code qu'il s'agisse d'atteindre de nouvelles cibles ou de nouvelles versions ou d'adapter les générateurs aux évolutions des abstractions de plus haut niveaux, comment appréhender ces co-évolutions ? comment concevoir les générateurs de codes pour qu'ils supportent celles-ci ? les données existent… 
+Face aux masses de codes ainsi produites, les outils aujourd'hui ne sont pas adaptés qu'il s'agisse de les évaluer \defi{coevolution} ou de les prendre en compte dans l'étape difficile de recherche de défauts \cite{debugger}
+
+\subsection{Maintenir, une exigence de première classe}
+Face à la complexité des logiciels, malgré les grandes évolutions méthodologiques incluant le test et la preuve, il reste difficile aujourd'hui de réparer les logiciels alors même que quelques fois la simple reproduction d'une erreur est difficile. La construction des logiciels et les 
 
 
 \bibliographystyle{plain}

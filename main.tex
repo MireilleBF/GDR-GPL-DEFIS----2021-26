@@ -5,7 +5,8 @@
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
 \usepackage{url}
-
+\usepackage{hyperref}
+ 
 \usepackage{eurosym}
 \usepackage{amssymb}
 \usepackage{xcolor}
@@ -20,18 +21,19 @@
 \newcommand{\silent}[1]{}
 \newcommand{\gpl}[0]{génie de la programmation et du logiciel\xspace}
 \newcommand{\GL}[0]{Génie Logiciel\xspace}
+\newcommand{\GDR}{GdR}
 \newcommand{\eg}[0]{\emph{e.g.},~}
 \newcommand{\ie}[0]{\emph{i.e.},~}
 \newcommand{\etal}[0]{\emph{et al.}~}
 \newcommand{\wrt}[0]{\emph{w.r.t.}~}
 \newcommand{\cf}[0]{cf.~}
-\newcommand{\defi}[1]{\emph{défi~% p.\pageref{#1}, 
-\cite{#1}}}
+%\newcommand{\defi}[1]{\emph{défi~% p.\pageref{#1}, \cite{#1}}}
+\newcommand{\defi}[1]{\cite[défi]{#1}}
 \newcommand{\defEnum}[1]{\emph{défi~\cite{#1}~p.~\pageref{#1}}}
 \usepackage{pdfpages}
 
 
-\title{GdR Génie de la Programmation et du Logiciel\\ 
+\title{{\GDR}~ Génie de la Programmation et du Logiciel\\ 
 Défis 2030}
 \author{Mireille Blay-Fornarino, Catherine Dubois, Pierre-Etienne Moreau\\
 \\
@@ -39,10 +41,10 @@ Défis 2030}
 }
 \begin{document}
 \maketitle
-
+\tableofcontents
 \section{Introduction}
 
-Le manifeste~\cite{manifeste} rédigé par une partie de la communauté du Groupement de Recherche du CNRS sur le Génie de la Programmation et du Logiciel (GDR GPL) commence par ces mots : \emph{Le contraste est saisissant entre, d’un côté, l’omniprésence de l’informatique dans notre
+Le manifeste~\cite{manifeste} rédigé par une partie de la communauté du Groupement de Recherche du CNRS sur le Génie de la Programmation et du Logiciel ({\GDR}~ GPL) commence par ces mots : \emph{Le contraste est saisissant entre, d’un côté, l’omniprésence de l’informatique dans notre
 société et la facilité avec laquelle on peut écrire un petit programme, et d’un autre côté, la difficulté extraordinaire de garantir la correction, la fiabilité, les performances ou encore
 l’évolutivité d’un logiciel complexe comme on en rencontre aujourd’hui dans tous les pans
 de notre société : télécoms, aérospatiale, automobile mais aussi finance, santé,
@@ -69,14 +71,14 @@ modéliser et fiabiliser les logiciels ou encore pour devancer l'évolution
 technologique, mais également pour prendre en compte de nouveaux enjeux de
 société tels que le développement durable, les économies d'énergie ou la maîtrise des systèmes intégrant de l'intelligence artificielle.
 
-Au sein du GDR GPL, les équipes de recherche françaises qui travaillent sur ces thématiques ont mis en exergue, en décembre 2019, les défis auxquels elles s'intéressent. Dans cet article, nous en proposons une synthèse, non exhaustive, à destination de lecteurs non nécessairement experts du domaine. Les aspects %recherche 
-nécessitant des connaissances expertes sont décrits dans les documents joints ci-après.
+Au sein du {\GDR}~GPL, les équipes de recherche françaises qui travaillent sur ces thématiques ont mis en exergue, en décembre 2019, les défis auxquels elles s'intéressent. Dans cet article, nous en proposons une synthèse, non exhaustive, à destination de lecteurs non nécessairement experts du domaine. Les aspects %recherche 
+nécessitant des connaissances expertes sont décrits dans les documents joints ci-après. En 2012 et en 2014, la communauté avait également répondu à un appel à défi; la synthèse des réponses a  publiée dans TSI ~\cite{collet:hal-01345654, duchien:hal-00712942}.
 
 
 Nous avons choisi d'organiser cette présentation des défis selon trois axes qui sont la fiabilité (\cf\ref{s:fiabilite}), la maintenance (\cf\ref{s:maintenance}) et l'évaluation des logiciels (\cf\ref{s:evaluation}). La fiabilité est un défi majeur pour les logiciels qui sont omniprésents dans nos vies, la maintenance pose des problèmes économiques et écologiques pour notre société, tandis que l'évaluation est au c{\oe}ur même de la méthode scientifique.
 
 \section{Fiabilité des logiciels\label{s:fiabilite}}
-La fiabilité d'un logiciel est définie par la norme ISO9126 comme la faculté du logiciel de maintenir un niveau de performance spécifique quand utilisé sous des conditions spécifiques. Elle se décline ainsi en différentes dimensions dont la conformité aux objectifs, la sûreté de fonctionnement, la sécurité, les performances, l'efficacité énergétique\ldots. 
+La fiabilité d'un logiciel est définie par la norme ISO9126 comme la faculté du logiciel de maintenir un niveau de performance spécifique quand utilisé sous des conditions spécifiques. Elle se décline ainsi en différentes dimensions dont la conformité aux objectifs, la sûreté de fonctionnement, la sécurité, les performances, l'efficacité énergétique\ldots 
 C'est un des défis majeurs mis en exergue par nombre de chercheurs dont Xavier Leroy dans son discours inaugural à l'académie des sciences~\cite{leroy:hal-02370113}. Si des avancées majeures ont été obtenues dans les secteurs de la vérification, du test, de la preuve formelle, de la surveillance, il reste de nombreux défis à relever pour rendre les systèmes logiciels plus sûrs et améliorer notre confiance dans ces systèmes. 
 Les chercheurs en GPL travaillent à une continuité essentielle entre l'expression d'un problème, la mise en {\oe}uvre et la maintenance de la solution logicielle, continuité qui doit permettre de tracer, vérifier, faire évoluer les applications avec une plus grande fiabilité (cf.~\ref{ss:fiabilite:continuite}). Cette continuité implique de maîtriser non seulement le lien entre la spécification et sa mise en  {\oe}uvre dans différents  programmes, mais également l'exécution du programme, qui dépend des compilateurs utilisés et de l'environnement dans lequel il s'exécute (\cf\ref{ss:fiabilite:execution}). 
 L'augmentation des besoins en logiciels et leur omniprésence dans notre quotidien exigent bien évidemment que nous nous assurions de la fiabilité des logiciels produits, mais également que les éléments utilisés pour attester de cette fiabilité soient efficaces au sens où ils permettent de valider de plus en plus de systèmes malgré leur complexité et  que nous puissions en justifier (\cf\ref{ss:fiabilite:confiance}).
@@ -126,20 +128,20 @@ Les méthodes et techniques introduites par la recherche en génie logiciel modi
 
 
 Un grand nombre des systèmes logiciels sont aujourd'hui distribués, concurrents, de très grande taille et appelés à s'adapter automatiquement aux changements de contexte d'exécution (\eg les systèmes Cloud, Fog, Edge et cyber-physiques), ce qui a conduit à accélérer les changements de méthodes et pratiques de production et maintenance des logiciels.   Au-delà d'une question d'agilité, il s'agit de se donner les moyens de produire des logiciels que nous maîtrisons 
-et qui s'adaptent à nos besoins (\cf\ref{ss:maintenance:reconfiguration}), sans perdre la dimension éco-responsable sans laquelle le "monde numérique" devient un danger (\cf\ref{ss:maintenance:vert}). Pour atteindre ces objectifs, il faut disposer des abstractions adaptées (\cf\ref{ss:maintenance:abstractions}) et intégrer dans la conception même des artefacts supports au développement la maintenance (\cf\ref{ss:maintenance:debugger}). Enfin, l'intelligence artificielle impacte aujourd'hui fortement les approches de maintenance des logiciels, nous introduisons au paragraphe \ref{ss:maintenance:IA} quelques-uns des défis posés.
+et qui s'adaptent à nos besoins (\cf\ref{ss:maintenance:reconfiguration}), sans perdre la dimension éco-responsable sans laquelle le "monde numérique" devient un danger (\cf\ref{ss:maintenance:vert}). 
+Pour atteindre ces objectifs, il faut disposer des abstractions adaptées (\cf\ref{ss:maintenance:abstractions}) et prendre en compte l’exigence de maintenance comme une fonctionnalité essentielle des outils de développements~(\cf\ref{ss:maintenance:debugger}). Enfin, l'intelligence artificielle impacte aujourd'hui fortement les approches de maintenance des logiciels, nous introduisons au paragraphe \ref{ss:maintenance:IA} quelques-uns des défis posés.
 
 
 
 \subsection{Reconfiguration dynamique et automatique des systèmes \label{ss:maintenance:reconfiguration}}
-Comme la structure des systèmes peut être utilisée en cours d'exécution pour découvrir des services ou adapter des composants, une reconfiguration dynamique correcte devient un aspect important de l'exécution du système. La conception d'outils formels intégrés de niveau d'abstraction supérieur pour aider à la conception d'une reconfiguration sûre, tolérante aux pannes et efficace des logiciels distribués est alors essentielle, voir le~\defi{reconfiguration}. 
+Comme la structure des systèmes peut être utilisée en cours d'exécution pour découvrir des services ou adapter des composants, une reconfiguration dynamique correcte devient un aspect important de l'exécution du système. La conception d'outils formels intégrés de niveau d'abstraction supérieur pour aider à la conception d'une reconfiguration sûre, tolérante aux pannes et efficace des logiciels distribués est alors essentielle~\defi{reconfiguration}. 
 La communauté de recherche aborde  également la question d’auto-optimiser 
 l'environnement (objets connectés, maison/industrie du futur)
-afin de  pousser aux changements comportementaux des utilisateurs 
-pour une transition énergétique et écologique plus large, voir le~\defi{vert}.
+pour favoriser une transition énergétique et écologique plus large~\defi{vert}.
 
 
 \subsection{Logiciels durables\label{ss:maintenance:vert}}
-Les logiciels qui nous entourent pour être durables doivent répondre aux besoins spécifiques de chacun, y compris dans des contextes métiers particuliers. Le problème est bien connu et les réponses apportées varient des architectures logicielles (en ce moment les micro services) aux langages dédiés, en utilisant différentes techniques dont l'ingénierie des modèles, voir le~\defi{coevolution}. 
+Les logiciels qui nous entourent pour être durables doivent répondre aux besoins spécifiques de chacun, y compris dans des contextes métiers particuliers. Le problème est bien connu et les réponses apportées varient des architectures logicielles (en ce moment les micro services) aux langages dédiés, en utilisant différentes techniques dont l'ingénierie des modèles~\defi{coevolution}. 
 De manière presque contradictoire 
 cette capacité des systèmes à s’adapter conduit parfois à des
 \og obésiciels \fg, qui exigent beaucoup de ressources (mémoire, énergie ou temps) par rapport aux tâches qu'ils doivent remplir. Pour pallier ces obésités, 
@@ -150,7 +152,7 @@ L'expression des systèmes et solutions en utilisant les abstractions adaptées 
 
 
 
-Ces dernières années, différents outils ont été élaborés pour permettre aux utilisateurs de définir leurs  propres abstractions afin de construire des langages et environnements dédiés pour augmenter leur productivité. Ces abstractions sont exploitées par composition, génération et/ou configuration de code. La question de la maintenance est alors éminemment complexe puisqu'il s'agit de s'adapter en même temps à l'évolution des concepts, aux mécanismes qui les exploitent, aux cibles, tout en garantissant la \og qualité \fg~des applications construites. On parle alors de co-évolutions. Si le problème est connu, les avancées en \GL~et les données accumulées dans ces processus devraient permettre de proposer des solutions plus automatiques, rapides et efficaces (voir le \defi{coevolution}), et de les prendre en compte dans l'étape difficile de recherche de défauts,  voir le 
+Ces dernières années, différents outils ont été élaborés pour permettre aux utilisateurs de définir leurs  propres abstractions afin de construire des langages et environnements dédiés pour augmenter leur productivité. Ces abstractions sont exploitées par composition, génération et/ou configuration de code. La question de la maintenance est alors éminemment complexe puisqu'il s'agit de s'adapter en même temps à l'évolution des concepts, aux mécanismes qui les exploitent, aux cibles, tout en garantissant la \og qualité \fg~des applications construites. On parle alors de co-évolutions. Si le problème est connu, les avancées en \GL~et les données accumulées dans ces processus devraient permettre de proposer des solutions plus automatiques, rapides et efficaces~\defi{coevolution}, et de les prendre en compte dans l'étape difficile de recherche de défauts,  voir le 
 ~\defi{debuggers}. Une illustration de cette problématique est posée dans le cadre du \defi{combinatoire}, qui pose la question de définir des langages de spécification et de programmation adaptés aux objets de la combinatoire, impliquant la définition de théories logiques adaptées à ces représentations.
 
 
@@ -163,7 +165,7 @@ Face à la complexité des logiciels, malgré les grandes évolutions méthodolo
 La construction des logiciels et les 
 logiciels eux-mêmes utilisent des paradigmes évolués (e.g. concurrences des tâches, présences de modèles  non déterministes dans les architectures, communications par des composants tiers, masses des codes générés). 
 La  recherche des défauts ne peut plus être considérée comme une tâche secondaire, elle doit être appréhendée comme une discipline à part entière, à prendre en compte comme un élément essentiel aux développements mêmes des nouveaux supports de production d'application pour une gestion efficace des logiciels~\defi{debuggers}.
-Par exemple, comme nous en avons discuté précédemment, les logiciels sont souvent produits par génération de code. Face aux masses de codes ainsi produites, les outils aujourd'hui ne sont pas adaptés qu'il s'agisse de les évaluer~\defi{coevolution} ou de les prendre en compte dans l'étape difficile de recherche de défauts~\defi{debuggers}
+Par exemple, comme nous en avons discuté précédemment, les logiciels sont souvent produits par génération de code. Face aux masses de codes ainsi produites, les outils aujourd'hui ne sont pas adaptés qu'il s'agisse de les évaluer~\defi{coevolution} ou de les prendre en compte dans l'étape difficile de recherche de défauts~\defi{debuggers}.
 
 
 %\subsubsection{La maintenance face aux générateurs de code \label{ss:maintenance:debugger}}
@@ -176,102 +178,123 @@ Par exemple, comme nous en avons discuté précédemment, les logiciels sont sou
 
 \subsection{\GL~et Intelligence Artificielle\label{ss:maintenance:IA}}
 Peut-on parler aujourd'hui de logiciel sans aborder la question de l'intelligence artificielle et du machine learning ?
-Le \GL~est historiquement proche de l'intelligence artificielle (IA), en particulier de l'IA symbolique (représentation des connaissances, raisonnements, modèles d'acteurs\ldots). Les chercheurs exploitent depuis des années les travaux dans ce champ d'études et y contribuent largement (\eg lignes de produits logiciels  et extraction de connaissances~\cite{Carbonnel2020}, évolution des systèmes utilisant des ontologies~\cite{Quinton2020}). La relation spécifique à la gestion des masses de données et aux méthodes d'apprentissage statistique a été abordée dans l'ensemble des défis qu'il s'agisse d'utiliser ces techniques ou de servir ce champs de production de logiciels pour, par exemple, assurer la fiabilité des logiciels qui intègrent de tels composants, tester ces systèmes, expliquer\ldots. Le défi~\cite{IA} met en exergue différents défis auxquels la communauté du \gpl s'intéresse actuellement.
+Le \GL~est historiquement proche de l'intelligence artificielle (IA), en particulier de l'IA symbolique (représentation des connaissances, raisonnements, modèles d'acteurs\ldots). Les chercheurs exploitent depuis des années les travaux dans ce champ d'études et y contribuent largement (\eg lignes de produits logiciels  et extraction de connaissances~\cite{Carbonnel2020}, évolution des systèmes utilisant des ontologies~\cite{Quinton2020}). La relation spécifique à la gestion des masses de données et aux méthodes d'apprentissage statistique a été abordée dans l'ensemble des défis qu'il s'agisse d'utiliser ces techniques ou de servir ce champs de production de logiciels pour, par exemple, assurer la fiabilité des logiciels qui intègrent de tels composants, tester ces systèmes, expliquer\ldots~
+Dans~\cite{IA}, les auteurs mettent en exergue différents défis auxquels la communauté du \gpl~s'intéresse actuellement.
 
 \section{Évaluer pour maîtriser la production de logiciels \label{s:evaluation}}
 Nous avons choisi de mettre l'accent dans cette dernière partie sur différents travaux qui visent à évaluer la production de logiciels.
 
 %\subsection{Se donner les concepts et outils pour Mesurer}
 \paragraph{Évaluer les informations issues du monde réel}
-Aujourd'hui des approches formelles permettent de vérifier la sûreté des actions entreprises par un automatisme. Mais lorsque ces actions s'appuient sur les informations issues du monde réel, la précision de ces données et la justesse des informations transmises au système sont alors essentielles. Dans le \defi{emergents}, 
+Aujourd'hui des approches formelles permettent de vérifier la sûreté des actions entreprises par un automatisme. Mais lorsque ces actions s'appuient sur les informations issues du monde réel, la précision de ces données et la justesse des informations transmises au système sont alors essentielles. Dans \defi{emergents}, 
 des techniques de supervision,
 elles-mêmes prouvées correctes, sont donc mises en place pour évaluer la justesse des informations conduisant aux prises de décision dans les véhicules autonomes.
  
  \paragraph{Evaluer les performances des logiciels}
-Évaluer et prédire la consommation d'énergie  exige de raisonner à différents niveaux d'abstractions, en intégrant dans le raisonnement les aspects logiciels, réseaux, matériels et nos propres instruments de mesures, de mettre au point de nouvelles techniques de tests et d'analyses de masses de codes, et de prendre en compte la variabilité des usages. Plus largement, à la frontière du \GL,  mesurer la distance entre les gains apportés par le logiciel et sa frugalité en ressources, pour repenser la numérisation dirigée par de nouveaux référentiels est une des pistes de recherches étudiés dans le \defi{vert}.
+Évaluer et prédire la consommation d'énergie  exige de raisonner à différents niveaux d'abstractions, en intégrant dans le raisonnement les aspects logiciels, réseaux, matériels et nos propres instruments de mesures, de mettre au point de nouvelles techniques de tests et d'analyses de masses de codes, et de prendre en compte la variabilité des usages. Plus largement, à la frontière du \GL,  mesurer la distance entre les gains apportés par le logiciel et sa frugalité en ressources, pour repenser la numérisation dirigée par de nouveaux référentiels est une des pistes de recherches étudiées dans \defi{vert}.
 
 
 \paragraph{Méthodes statistiques appliquées à la production de logiciels}
-La communauté s'intéresse depuis quelques années à évaluer ses propres résultats par des méthodes empiriques~\cite{yu2019characterizing}. Cependant dans le contexte du \GL, les méthodes statistiques classiques ne sont pas toujours adaptées, et d'autres voies devraient être investiguées pour s'adapter au contexte particulier du \GL. En effet, de nombreuses variables influent sur le développement logiciel, dont le domaine d'application, l'équipe, les objectifs. Il en résulte la nécessité d'un grand nombre d'expérimentations impliquant beaucoup de développeurs, ce qui, dans un grand nombre d'applications, est impossible en pratique. Il est donc temps de trouver des techniques plus adaptées, notamment en intégrant dans les expérimentations menées les principes de reproductibilité indispensables à la mesure (voir le
-~\defi{GLE}) et en travaillant en amont avec l'industrie du logiciel pour produire les données dont nous avons besoin.
+La communauté s'intéresse depuis quelques années à évaluer ses propres résultats par des méthodes empiriques~\cite{yu2019characterizing}. Cependant dans le contexte du \GL, les méthodes statistiques classiques ne sont pas toujours adaptées, et d'autres voies devraient être investiguées pour s'adapter au contexte particulier du \GL. En effet, de nombreuses variables influent sur le développement logiciel, dont le domaine d'application, l'équipe, les objectifs. 
+Il en résulte la nécessité d'un grand nombre d'expérimentations impliquant beaucoup de développeurs, ce qui, dans un grand nombre d'applications, est impossible en pratique. Il est donc temps de trouver des techniques plus adaptées, notamment en intégrant dans les expérimentations menées les principes de reproductibilité indispensables à la mesure~\defi{GLE} et en travaillant en amont avec l'industrie du logiciel pour produire les données dont nous avons besoin.
 
 
 
 
 
 \section{Conclusion}
-Le \gpl est aujourd'hui au c{\oe}ur du développement logiciel et les défis à relever sont nombreux pour aller vers une révolution numérique  maîtrisée tant au sens de la fiabilité des logiciels produits, de l'efficience dans leur production et maintenance et de notre capacité à comprendre pour faire des choix sensés. Ces différents champs sont abordés par la recherche en \gpl~en France, notamment par des travaux inter-disciplinaires au sein de la science informatique mais également avec d'autres domaines dont les champs applicatifs. 
+Le \gpl~est au c{\oe}ur du développement logiciel et les défis à relever sont nombreux pour aller vers une révolution numérique  maîtrisée tant au sens de la fiabilité des logiciels produits, de l'efficience dans leur production et maintenance et de notre capacité à comprendre pour faire des choix sensés. Ces différents champs sont abordés par la recherche en \gpl~en France, notamment par des travaux inter-disciplinaires au sein de la science informatique mais également avec d'autres domaines dont les champs applicatifs. 
 Ces recherches  portent sur un objet en mouvement, qui connaît des "révolutions" régulières. Elles
 exigent une appréhension profonde de la partie théorique des domaines modélisés (\eg mathématiques, biologie, automatisme), la découverte, formalisation, mise en {\oe}uvre et exploitation de nouveaux paradigmes de programmation (\eg  cloud, green computing, introduction de modèles statistiques, informatique quantique) et leur transfert dans les pratiques industrielles qu'il s'agit à la fois d'analyser et d'accompagner. 
-Ainsi les apports théoriques et méthodologiques des recherches en \gpl s’appliquent aujourd'hui à de nombreuses disciplines scientifiques et techniques.
+Ainsi les apports théoriques et méthodologiques des recherches en \gpl~ s’appliquent aujourd'hui à de nombreuses disciplines scientifiques et techniques.
 
 %% Ce passage reprend quasiment mot pour mot la conclusion de Laurence sur les défis en ..
-Dans ce document, nous avons mis en exergue quelques-un des défis que des
-équipes du GDR GPL souhaitent relever dans les prochaines années. Ce document
+Dans ce document, nous avons mis en exergue quelques-uns des défis que des
+équipes du {\GDR}~GPL souhaitent relever dans les prochaines années. Ce document
 n’a pas l’ambition d’être exhaustif, mais il nous semble représentatif de la diversité
 des compétences de la communauté française en GPL et de l’intérêt de soutenir ses
-recherches
+recherches.
 
 
-
+\addcontentsline{toc}{section}{Remerciements}
 \section*{Remerciements}
 Nous tenons à remercier l'ensemble des porteurs de défis pour le travail réalisé en cette période si compliquée, sans autre objectif que de partager leurs travaux. Ce travail a été largement soutenu par les membres du comité de programme qui, par leurs retours et discussions, ont {\oe}uvré à une synergie plus intense entre nos différents champs de recherche.
 Enfin, les personnes suivantes nous ont plus spécifiquement aidé à affiner ce texte, en apportant leur expertise et leur vision : Alain Giorgetti.
 
 \bibliographystyle{plain}
 \bibliography{gdrGPLDefis}
-\section*{Défis, référence dans ce document}
-\begin{itemize}
-\item \defEnum{GLE}
-\item \defEnum{reconfiguration}
-\item \defEnum{IA}
-\item \defEnum{argumentation}
-\item \defEnum{compilation}
-\item \defEnum{emergents}
-\item \defEnum{debuggers}
-\item \defEnum{securite}
-\item\defEnum{combinatoire}
-\item \defEnum{vert}
-\item \defEnum{coevolution}
-\item \defEnum{Monniaux}
-\end{itemize}
+\addcontentsline{toc}{section}{Références}
+\addcontentsline{toc}{section}{Défis}
 
-\label{vert}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/logiciels_verts.pdf}
+%\subsection{GLE}
+\addcontentsline{toc}{subsection}{\cite{GLE}~:~Vers plus de fiabilité sur les résultats de recherche en génie logiciel}
+\label{GLE}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Vers_plus_de_fiabilite_Res_recherche.pdf}
 
-\label{combinatoire}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/combinatoire_certifiee.pdf}
-
-\label{emergents}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/FM_systemes_emergents.pdf}
+%\subsection{reconfiguration}
+\addcontentsline{toc}{subsection}{\cite{reconfiguration}~:~Safe and optimal component-based dynamic reconfiguration}
+\label{reconfiguration}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Safe_and_optimal_component-based dynamic reconfiguration.pdf}
 
 
-\label{argumentation}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/argumentation_pour_des_systemes_de_confiance.pdf}
 
-\label{Monniaux}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/chaine_compilation_certifiee.pdf}
-
-\label{coevolution}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/co-evolution_des_logiciels.pdf}
-
-\label{compilation}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Compilation_et_langages.pdf}
-
+%\subsection{IA}
+\addcontentsline{toc}{subsection}{\cite{IA}~:~Génie Logiciel et Intelligence Artificielle}
 \label{IA}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Intelligence_Artificielle.pdf}
 
+%\subsection{argumentation}
+\addcontentsline{toc}{subsection}{\cite{argumentation}~:~Quelle argumentation pour des systèmes de confiance ?}
+\label{argumentation}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/argumentation_pour_des_systemes_de_confiance.pdf}
+
+
+
+%\subsection{compilation}
+\addcontentsline{toc}{subsection}{\cite{compilation}~:~Défi en compilation et langages: du parallélisme oui, mais du parallélisme efficace et sûr!}
+\label{compilation}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Compilation_et_langages.pdf}
+
+
+
+%\subsection{emergents}
+\addcontentsline{toc}{subsection}{\cite{emergents}~:~Méthodes formelles pour la conception, la programmation et la vérification de systèmes critiques émergents}
+\label{emergents}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/FM_systemes_emergents.pdf}
+
+%\subsection{debuggers}
+\addcontentsline{toc}{subsection}{\cite{debuggers}~:~New Generation Debuggers}
 \label{debuggers}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/New_Generation_Debuggers.pdf}
 
 
-\label{reconfiguration}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Safe_and_optimal_component-based dynamic reconfiguration.pdf}
-
-\label{GLE}
-\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Vers_plus_de_fiabilite_Res_recherche.pdf}
-
+%\subsection{securite}
+\addcontentsline{toc}{subsection}{\cite{securite}~:~La sécurité dans le développement logiciel}
 \label{securite}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/securite_dans_le_developpement_logiciel.pdf}
+
+%\subsection{combinatoire}
+\addcontentsline{toc}{subsection}{\cite{combinatoire}~:~Combinatoire certifiée}
+\label{combinatoire}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/combinatoire_certifiee.pdf}
+
+
+%\subsection{Vert}
+\addcontentsline{toc}{subsection}{\cite{vert}~:~Vers des Logiciels éco-responsables, Le génie logiciel au défi de la sobriété écologique}
+\label{vert}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/logiciels_verts.pdf}
+
+%\subsection{coevolution}
+\addcontentsline{toc}{subsection}{\cite{coevolution}~:~Gestion de la co-évolution des logiciels partiellement générés pendant la phase d'évolution et de maintenance}
+\label{coevolution}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/co-evolution_des_logiciels.pdf}
+
+
+
+%\subsection{Monniaux}
+\addcontentsline{toc}{subsection}{\cite{Monniaux}~:~Chaîne de compilation formellement certifiée.}
+\label{Monniaux}
+\includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/chaine_compilation_certifiee.pdf}
+
 
 \end{document}

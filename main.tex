@@ -78,7 +78,7 @@ nécessitant des connaissances expertes sont décrits dans les documents joints 
 Nous avons choisi d'organiser cette présentation des défis selon trois axes qui sont la fiabilité (\cf\ref{s:fiabilite}), la maintenance (\cf\ref{s:maintenance}) et l'évaluation des logiciels (\cf\ref{s:evaluation}). La fiabilité est un défi majeur pour les logiciels qui sont omniprésents dans nos vies, la maintenance pose des problèmes économiques et écologiques pour notre société, tandis que l'évaluation est au c{\oe}ur même de la méthode scientifique.
 
 \section{Fiabilité des logiciels\label{s:fiabilite}}
-La fiabilité d'un logiciel est définie par la norme ISO9126 comme la faculté du logiciel de maintenir un niveau de performance spécifique quand utilisé sous des conditions spécifiques. Elle se décline ainsi en différentes dimensions dont la conformité aux objectifs, la sûreté de fonctionnement, la sécurité, les performances, l'efficacité énergétique\ldots 
+La fiabilité d'un logiciel est définie par la norme ISO9126 comme la faculté du logiciel de maintenir un niveau de performance spécifique quand utilisé sous des conditions spécifiques. Elle se décline ainsi en différentes dimensions dont la conformité aux objectifs, la sûreté de fonctionnement, la sécurité, les performances, l'efficacité énergétique\ldots~
 C'est un des défis majeurs mis en exergue par nombre de chercheurs dont Xavier Leroy dans son discours inaugural à l'académie des sciences~\cite{leroy:hal-02370113}. Si des avancées majeures ont été obtenues dans les secteurs de la vérification, du test, de la preuve formelle, de la surveillance, il reste de nombreux défis à relever pour rendre les systèmes logiciels plus sûrs et améliorer notre confiance dans ces systèmes. 
 Les chercheurs en GPL travaillent à une continuité essentielle entre l'expression d'un problème, la mise en {\oe}uvre et la maintenance de la solution logicielle, continuité qui doit permettre de tracer, vérifier, faire évoluer les applications avec une plus grande fiabilité (cf.~\ref{ss:fiabilite:continuite}). Cette continuité implique de maîtriser non seulement le lien entre la spécification et sa mise en  {\oe}uvre dans différents  programmes, mais également l'exécution du programme, qui dépend des compilateurs utilisés et de l'environnement dans lequel il s'exécute (\cf\ref{ss:fiabilite:execution}). 
 L'augmentation des besoins en logiciels et leur omniprésence dans notre quotidien exigent bien évidemment que nous nous assurions de la fiabilité des logiciels produits, mais également que les éléments utilisés pour attester de cette fiabilité soient efficaces au sens où ils permettent de valider de plus en plus de systèmes malgré leur complexité et  que nous puissions en justifier (\cf\ref{ss:fiabilite:confiance}).
@@ -130,7 +130,6 @@ Les méthodes et techniques introduites par la recherche en génie logiciel modi
 Un grand nombre des systèmes logiciels sont aujourd'hui distribués, concurrents, de très grande taille et appelés à s'adapter automatiquement aux changements de contexte d'exécution (\eg les systèmes Cloud, Fog, Edge et cyber-physiques), ce qui a conduit à accélérer les changements de méthodes et pratiques de production et maintenance des logiciels.   Au-delà d'une question d'agilité, il s'agit de se donner les moyens de produire des logiciels que nous maîtrisons 
 et qui s'adaptent à nos besoins (\cf\ref{ss:maintenance:reconfiguration}), sans perdre la dimension éco-responsable sans laquelle le "monde numérique" devient un danger (\cf\ref{ss:maintenance:vert}). 
 Pour atteindre ces objectifs, il faut disposer des abstractions adaptées (\cf\ref{ss:maintenance:abstractions}) et prendre en compte l’exigence de maintenance comme une fonctionnalité essentielle des outils de développements~(\cf\ref{ss:maintenance:debugger}). Enfin, l'intelligence artificielle impacte aujourd'hui fortement les approches de maintenance des logiciels, nous introduisons au paragraphe \ref{ss:maintenance:IA} quelques-uns des défis posés.
-
 
 
 \subsection{Reconfiguration dynamique et automatique des systèmes \label{ss:maintenance:reconfiguration}}
@@ -227,72 +226,73 @@ Enfin, les personnes suivantes nous ont plus spécifiquement aidé à affiner ce
 \addcontentsline{toc}{section}{Défis}
 
 %\subsection{GLE}
-\addcontentsline{toc}{subsection}{\cite{GLE}~:~Vers plus de fiabilité sur les résultats de recherche en génie logiciel}
+\phantomsection
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{GLE}}{}~:~Vers plus de fiabilité sur les résultats de recherche en génie logiciel}
 \label{GLE}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Vers_plus_de_fiabilite_Res_recherche.pdf}
 
 %\subsection{reconfiguration}
-\addcontentsline{toc}{subsection}{\cite{reconfiguration}~:~Safe and optimal component-based dynamic reconfiguration}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{reconfiguration}}{}~:~Safe and optimal component-based dynamic reconfiguration}
 \label{reconfiguration}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Safe_and_optimal_component-based dynamic reconfiguration.pdf}
 
 
 
 %\subsection{IA}
-\addcontentsline{toc}{subsection}{\cite{IA}~:~Génie Logiciel et Intelligence Artificielle}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{IA}}{}~:~Génie Logiciel et Intelligence Artificielle}
 \label{IA}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Intelligence_Artificielle.pdf}
 
 %\subsection{argumentation}
-\addcontentsline{toc}{subsection}{\cite{argumentation}~:~Quelle argumentation pour des systèmes de confiance ?}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{argumentation}}{}~:~Quelle argumentation pour des systèmes de confiance ?}
 \label{argumentation}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/argumentation_pour_des_systemes_de_confiance.pdf}
 
 
 
 %\subsection{compilation}
-\addcontentsline{toc}{subsection}{\cite{compilation}~:~Défi en compilation et langages: du parallélisme oui, mais du parallélisme efficace et sûr!}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{compilation}}{}~:~Défi en compilation et langages: du parallélisme oui, mais du parallélisme efficace et sûr!}
 \label{compilation}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/Compilation_et_langages.pdf}
 
 
 
 %\subsection{emergents}
-\addcontentsline{toc}{subsection}{\cite{emergents}~:~Méthodes formelles pour la conception, la programmation et la vérification de systèmes critiques émergents}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{emergents}}{}~:~Méthodes formelles pour la conception, la programmation et la vérification de systèmes critiques émergents}
 \label{emergents}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/FM_systemes_emergents.pdf}
 
 %\subsection{debuggers}
-\addcontentsline{toc}{subsection}{\cite{debuggers}~:~New Generation Debuggers}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{debuggers}}{}~:~New Generation Debuggers}
 \label{debuggers}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/New_Generation_Debuggers.pdf}
 
 
 %\subsection{securite}
-\addcontentsline{toc}{subsection}{\cite{securite}~:~La sécurité dans le développement logiciel}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{securite}}{}~:~La sécurité dans le développement logiciel}
 \label{securite}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/securite_dans_le_developpement_logiciel.pdf}
 
 %\subsection{combinatoire}
-\addcontentsline{toc}{subsection}{\cite{combinatoire}~:~Combinatoire certifiée}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{combinatoire}}{}~:~Combinatoire certifiée}
 \label{combinatoire}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/combinatoire_certifiee.pdf}
 
 
 %\subsection{Vert}
-\addcontentsline{toc}{subsection}{\cite{vert}~:~Vers des Logiciels éco-responsables, Le génie logiciel au défi de la sobriété écologique}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{vert}}{}~:~Vers des Logiciels éco-responsables, Le génie logiciel au défi de la sobriété écologique}
 \label{vert}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/logiciels_verts.pdf}
 
 %\subsection{coevolution}
-\addcontentsline{toc}{subsection}{\cite{coevolution}~:~Gestion de la co-évolution des logiciels partiellement générés pendant la phase d'évolution et de maintenance}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{coevolution}}{}~:~Gestion de la co-évolution des logiciels partiellement générés pendant la phase d'évolution et de maintenance}
 \label{coevolution}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/co-evolution_des_logiciels.pdf}
 
 
 
 %\subsection{Monniaux}
-\addcontentsline{toc}{subsection}{\cite{Monniaux}~:~Chaîne de compilation formellement certifiée.}
+\addcontentsline{toc}{subsection}{\texorpdfstring{\cite{Monniaux}}{}~:~Chaîne de compilation formellement certifiée.}
 \label{Monniaux}
 \includepdf[pages=-,pagecommand={\thispagestyle{plain}}]{Defis/chaine_compilation_certifiee.pdf}
 
